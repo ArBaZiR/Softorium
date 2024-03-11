@@ -42,6 +42,11 @@
     padding: 40px 75px 50px 60px;
     border-radius: 100px;
     box-shadow: -10px 30px 40px 0px #e4876848;
+    transition: 0.15s;
+
+    &:hover {
+      transform: translateY(4.5px);
+    }
 
     > div {
       > div {
@@ -72,8 +77,11 @@
         transition: 0.1s;
       }
 
+      &:active {
+        transform: translateY(5px);
+      }
+
       &:hover {
-        transform: scale(1.05);
         color: #ffffff;
         background-color: #20aad8;
 
