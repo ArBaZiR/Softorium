@@ -1,0 +1,122 @@
+// word-break: normal;
+
+.block {
+  h1 {
+    font-size: 72px;
+    font-weight: 400;
+    span {
+      background: linear-gradient(93.29deg, #0099cc 4.64%, #ff6633 58.75%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  }
+
+  > p {
+    font-size: 30px;
+  }
+}
+
+.line {
+  position: relative;
+  background: linear-gradient(93.29deg, #0099cc 4.64%, #ff6633 58.75%);
+  width: 70%;
+  left: -25%;
+  height: 2px;
+  margin: 40px 0;
+}
+
+.block__vacancy {
+  display: flex;
+  flex-direction: column;
+  row-gap: 60px;
+  margin-top: 60px;
+
+  > div {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    column-gap: 40px;
+    row-gap: 25px;
+    justify-content: space-between;
+    background-color: #ffffff;
+    padding: 40px 75px 50px 60px;
+    border-radius: 100px;
+    box-shadow: -10px 30px 40px 0px #e4876848;
+
+    > div {
+      > div {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        column-gap: 10px;
+      }
+
+      p {
+        margin-top: 25px;
+      }
+    }
+
+    > button {
+      position: relative;
+      color: #0099cc;
+      padding: 52px 20px;
+      border: 1px solid #0099cc;
+      border-radius: 50%;
+      transition: 0.3s;
+
+      &::after {
+        position: absolute;
+        content: url("icon/vacancy__block_arrow.svg");
+        bottom: -25px;
+        right: -30px;
+        transition: 0.1s;
+      }
+
+      &:hover {
+        transform: scale(1.05);
+        color: #ffffff;
+        background-color: #20aad8;
+
+        &::after {
+          right: -35px;
+          bottom: -30px;
+        }
+      }
+    }
+  }
+}
+
+.technologies {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 15px;
+  p {
+    color: #ffffff;
+    padding: 5px 10px;
+    border-radius: 15px 0 15px 0;
+  }
+}
+
+.backgroundPeople {
+  position: absolute;
+  z-index: -1;
+  top: 20%;
+  right: 15%;
+}
+
+@media (max-width: 550px) {
+  .block {
+    h1 {
+      font-size: 45px;
+    }
+  }
+
+  .block__vacancy {
+    align-items: center;
+  }
+
+  .line {
+    width: 100%;
+    left: 0;
+  }
+}
