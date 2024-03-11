@@ -52,6 +52,7 @@
       > div {
         display: flex;
         flex-wrap: wrap;
+        row-gap: 15px;
         align-items: center;
         column-gap: 10px;
         margin-top: 25px;
@@ -94,7 +95,9 @@
 .technologies {
   display: flex;
   flex-wrap: wrap;
+  row-gap: 20px;
   column-gap: 15px;
+
   p {
     color: #ffffff;
     padding: 5px 10px;
