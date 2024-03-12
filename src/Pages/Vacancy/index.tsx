@@ -15,6 +15,10 @@ export default function Vacancy() {
   //     body: JSON.stringify("Что надо положить"),
   //   });
   // }, []);
+  interface TypeEl {
+    tech: string;
+    color: string;
+  }
 
   return (
     <div className={styles.block}>
@@ -32,9 +36,9 @@ export default function Vacancy() {
               <div>
                 <p>Основной стек: </p>
                 <div className={styles.technologies}>
-                  {el.technologies.map((el, i) => (
-                    <p style={{ backgroundColor: el.color }} key={i}>
-                      {el.tech}
+                  {el.technologies.map(({ tech, color }: TypeEl, i: number) => (
+                    <p style={{ backgroundColor: color }} key={i}>
+                      {tech}
                     </p>
                   ))}
                 </div>
@@ -42,13 +46,13 @@ export default function Vacancy() {
               <div>
                 <p>Будет плюсом, если владеете:</p>
                 <div className={styles.technologies}>
-                  {el.moreTech.map((el, i) => (
+                  {el.moreTech.map(({ tech, color }: TypeEl, i: number) => (
                     <p
                       className={styles.technologies}
                       key={i}
-                      style={{ backgroundColor: el.color }}
+                      style={{ backgroundColor: color }}
                     >
-                      {el.tech}
+                      {tech}
                     </p>
                   ))}
                 </div>

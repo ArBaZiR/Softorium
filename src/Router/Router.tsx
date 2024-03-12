@@ -8,6 +8,7 @@ import {
 import MainPage from "../Pages/MainPage";
 // Pages
 import Vacancy from "../Pages/Vacancy";
+import VacancyInfo from "../Pages/VacancyInfo";
 
 export default function App() {
   //
@@ -23,6 +24,10 @@ export default function App() {
         {
           path: "/",
           element: <Vacancy />,
+        },
+        {
+          path: "info",
+          element: <VacancyInfo />,
         },
       ],
     },
