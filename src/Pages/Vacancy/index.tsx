@@ -2,6 +2,7 @@
 import styles from "./vacancy.module.scss";
 //
 import { array } from "../../FakeBd";
+import { Link } from "react-router-dom";
 
 export default function Vacancy() {
   //
@@ -58,7 +59,9 @@ export default function Vacancy() {
                 </div>
               </div>
             </div>
-            <button onClick={() => console.log(2311)}>Подробнее</button>
+            <Link to={"info"}>
+              <button onClick={() => console.log(2311)}>Подробнее</button>
+            </Link>
           </div>
         ))}
       </div>
