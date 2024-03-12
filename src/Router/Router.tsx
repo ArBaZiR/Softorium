@@ -12,7 +12,6 @@ import VacancyInfo from "../Pages/VacancyInfo";
 
 export default function App() {
   //
-
   const routes = createBrowserRouter([
     {
       element: <MainPage />,
@@ -26,7 +25,7 @@ export default function App() {
           element: <Vacancy />,
         },
         {
-          path: "info",
+          path: "info/:vacancyId",
           element: <VacancyInfo />,
         },
       ],

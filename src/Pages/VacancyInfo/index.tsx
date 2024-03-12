@@ -1,8 +1,9 @@
 //
 import styles from "./vacancyInfo.module.scss";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 //
 import { array } from "../../FakeBd";
+import { useRef } from "react";
 
 interface TypeEl {
   tech: string;
@@ -10,10 +11,13 @@ interface TypeEl {
 }
 
 export default function VacancyInfo() {
+  const { vacancyId } = useParams();
+  const RefInd = useRef(Number(vacancyId));
+
   return (
     <div className={styles.block}>
       <div>
-        <h1>Frontend Deloveper</h1>
+        <h1>{array[RefInd.current - 1].title}</h1>
         <h2>от {"150 000$"}</h2>
         <button>Откликнуться</button>
         <div className={styles.copany__info}>
@@ -29,7 +33,7 @@ export default function VacancyInfo() {
           <div className={styles.technologies}>
             <p>Основной стек: </p>
             <div>
-              {array[0].technologies.map(
+              {array[RefInd.current - 1].technologies.map(
                 ({ tech, color }: TypeEl, i: number) => (
                   <p style={{ backgroundColor: color }} key={i}>
                     {tech}
@@ -41,11 +45,13 @@ export default function VacancyInfo() {
           <div className={styles.technologies}>
             <p>Будет плюсом, если владеете:</p>
             <div>
-              {array[0].moreTech.map(({ tech, color }: TypeEl, i: number) => (
-                <p key={i} style={{ backgroundColor: color }}>
-                  {tech}
-                </p>
-              ))}
+              {array[RefInd.current - 1].moreTech.map(
+                ({ tech, color }: TypeEl, i: number) => (
+                  <p key={i} style={{ backgroundColor: color }}>
+                    {tech}
+                  </p>
+                )
+              )}
             </div>
           </div>
         </div>
