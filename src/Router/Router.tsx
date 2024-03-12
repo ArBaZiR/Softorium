@@ -9,7 +9,8 @@ import MainPage from "../Pages/MainPage";
 // Pages
 import Vacancy from "../Pages/Vacancy";
 import VacancyInfo from "../Pages/VacancyInfo";
-
+import { array } from "../FakeBd";
+//
 export default function App() {
   //
   const routes = createBrowserRouter([
@@ -24,10 +25,12 @@ export default function App() {
           path: "/",
           element: <Vacancy />,
         },
-        {
-          path: "info/:vacancyId",
-          element: <VacancyInfo />,
-        },
+        array.length
+          ? {
+              path: "info/:vacancyId",
+              element: <VacancyInfo />,
+            }
+          : {},
       ],
     },
   ]);
