@@ -58,36 +58,36 @@
         margin-top: 25px;
       }
     }
+  }
+}
 
-    > button {
-      position: relative;
-      color: #0099cc;
-      padding: 52px 20px;
-      border: 1px solid #0099cc;
-      border-radius: 50%;
-      transition: 0.3s;
+.showMore {
+  position: relative;
+  color: #0099cc;
+  padding: 52px 20px;
+  border: 1px solid #0099cc;
+  border-radius: 50%;
+  transition: 0.3s;
 
-      &::after {
-        position: absolute;
-        content: url("/icon/vacancy__block_arrow.svg");
-        bottom: -25px;
-        right: -30px;
-        transition: 0.1s;
-      }
+  &::after {
+    position: absolute;
+    content: url("/icon/vacancy__block_arrow.svg");
+    bottom: -25px;
+    right: -30px;
+    transition: 0.1s;
+  }
 
-      &:active {
-        transform: translateY(5px);
-      }
+  &:active {
+    transform: translateY(5px);
+  }
 
-      &:hover {
-        color: #ffffff;
-        background-color: #20aad8;
+  &:hover {
+    color: #ffffff;
+    background-color: #20aad8;
 
-        &::after {
-          right: -35px;
-          bottom: -30px;
-        }
-      }
+    &::after {
+      right: -35px;
+      bottom: -30px;
     }
   }
 }

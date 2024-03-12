@@ -60,7 +60,12 @@ export default function Vacancy() {
               </div>
             </div>
             <Link to={"info"}>
-              <button onClick={() => console.log(2311)}>Подробнее</button>
+              <button
+                className={styles.showMore}
+                onClick={() => console.log(2311)}
+              >
+                Подробнее
+              </button>
             </Link>
           </div>
         ))}
