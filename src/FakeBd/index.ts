@@ -1,11 +1,5 @@
 //
-type TypeArray = {
-  tilte: string;
-  technologies: object[];
-  moreTech: object[];
-};
-
-export const array: object[] = [
+export const array = [
   {
     title: "Frontend Developer",
     technologies: [
