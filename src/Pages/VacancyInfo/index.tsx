@@ -18,7 +18,7 @@ export default function VacancyInfo() {
     <div className={styles.block}>
       <div>
         <h1>{array[RefInd.current - 1].title}</h1>
-        <h2>от {array[RefInd.current - 1].salary}</h2>
+        <h2>от {array[RefInd.current - 1].salary} руб</h2>
         <button>Откликнуться</button>
         <div className={styles.copany__info}>
           <h3>О нас</h3>
