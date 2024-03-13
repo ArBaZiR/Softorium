@@ -9,7 +9,6 @@ import MainPage from "../Pages/MainPage";
 // Pages
 import Vacancy from "../Pages/Vacancy";
 import VacancyInfo from "../Pages/VacancyInfo";
-import { array } from "../FakeBd";
 //
 export default function App() {
   //
@@ -25,12 +24,10 @@ export default function App() {
           path: "/",
           element: <Vacancy />,
         },
-        array.length
-          ? {
-              path: "info/:vacancyId",
-              element: <VacancyInfo />,
-            }
-          : {},
+        {
+          path: "/:vacancyId",
+          element: <VacancyInfo />,
+        },
       ],
     },
   ]);

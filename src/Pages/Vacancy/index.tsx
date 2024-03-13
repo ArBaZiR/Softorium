@@ -1,25 +1,31 @@
 //
 import styles from "./vacancy.module.scss";
 //
-import { array } from "../../FakeBd";
 import { Link } from "react-router-dom";
+// REDAX
+import { useSelector } from "react-redux";
+// API
+import { VacancyApi } from "../../hooks";
+
+type TypeObject = {
+  vacancySlice: object;
+};
+type TypeEl = {
+  name: string;
+};
+type TypeAllVacancy = {
+  name: string;
+  main_technologies: [];
+  more_technologies: [];
+  slug: string;
+};
 
 export default function Vacancy() {
+  VacancyApi();
   //
-  // useEffect(() => {
-  //   fetch("Запрос", {
-  //     method: "POST",
-  //     headers: {
-  //       Accept: "application/json",
-  //       "Content-Type": "application/json",
-  //     },
-  //     body: JSON.stringify("Что надо положить"),
-  //   });
-  // }, []);
-  type TypeEl = {
-    tech: string;
-    color: string;
-  };
+  const { allVacancy }: any = useSelector(
+    ({ vacancySlice }: TypeObject) => vacancySlice
+  );
 
   return (
     <div className={styles.block}>
@@ -30,39 +36,31 @@ export default function Vacancy() {
       <div className={styles.line} />
       <p>в команду Softoriun требуются:</p>
       <div className={styles.block__vacancy}>
-        {array.length ? (
-          array.map((el, i) => (
+        {allVacancy.length ? (
+          allVacancy.map((el: TypeAllVacancy, i: number) => (
             <div key={i}>
               <div>
-                <h2>{el.title}</h2>
+                <h2>{el.name}</h2>
                 <div>
                   <p>Основной стек: </p>
                   <div className={styles.technologies}>
-                    {el.technologies.map(
-                      ({ tech, color }: TypeEl, i: number) => (
-                        <p style={{ backgroundColor: color }} key={i}>
-                          {tech}
-                        </p>
-                      )
-                    )}
+                    {el.main_technologies.map(({ name }: TypeEl, i: number) => (
+                      <p key={i}>{name}</p>
+                    ))}
                   </div>
                 </div>
                 <div>
                   <p>Будет плюсом, если владеете:</p>
                   <div className={styles.technologies}>
-                    {el.moreTech.map(({ tech, color }: TypeEl, i: number) => (
-                      <p
-                        className={styles.technologies}
-                        key={i}
-                        style={{ backgroundColor: color }}
-                      >
-                        {tech}
+                    {el.more_technologies.map(({ name }: TypeEl, i: number) => (
+                      <p className={styles.technologies} key={i}>
+                        {name}
                       </p>
                     ))}
                   </div>
                 </div>
               </div>
-              <Link to={`info/${i + 1}`}>
+              <Link to={`${el.slug}`}>
                 <button className={styles.showMore}>Подробнее</button>
               </Link>
             </div>

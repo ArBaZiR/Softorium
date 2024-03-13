@@ -1,43 +1,52 @@
 //
 import styles from "./vacancyInfo.module.scss";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
+import { useEffect, useState } from "react";
 //
-import { array } from "../../FakeBd";
-import { useRef } from "react";
-
-interface TypeEl {
-  tech: string;
-  color: string;
-}
-
 export default function VacancyInfo() {
-  const { vacancyId } = useParams();
-  const RefInd = useRef(Number(vacancyId));
+  const navigate = useNavigate();
+  const locate = useLocation();
+  const [vacancy, setVacancy] = useState<any>({}); //Исправить
+  const [isLoading, setIsLoading] = useState(true);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    fetch(
+      `https://newsite.softorium.pro/admin-area/api/visitor/vacancy${locate.pathname}`,
+      {
+        headers: {
+          Accept: "application/json",
+        },
+      }
+    )
+      .then((data) => data.json())
+      .then((data) =>
+        !data.detail ? (setVacancy(data), setIsLoading(false)) : navigate("/")
+      );
+  }, []);
+  console.log(vacancy);
 
-  return (
+  return !isLoading ? (
     <div className={styles.block}>
       <div>
-        <h1>{array[RefInd.current - 1].title}</h1>
-        <h2>от {array[RefInd.current - 1].salary} руб</h2>
+        <h1>{vacancy.name}</h1>
+        <h2>зарплата {vacancy.salary}</h2>
         <button>Откликнуться</button>
-        <div className={styles.copany__info}>
-          <h3>О нас</h3>
-          <p>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-            Repudiandae eaque cupiditate laboriosam quo, ad ipsam dolorem porro?
-            Cum vel aspernatur recusandae quam, voluptate accusantium. Saepe.
-          </p>
+        <div className={styles.list_offer}>
+          <h3>Мы можем предложить</h3>
+          <div>
+            {vacancy.list_offer.map((el: { name: string }) => (
+              <p>{el.name}</p>
+            ))}
+          </div>
         </div>
         <div className={styles.technologies__block}>
           <h2>Что мы используем:</h2>
           <div className={styles.technologies}>
             <p>Основной стек: </p>
             <div>
-              {array[RefInd.current - 1].technologies.map(
-                ({ tech, color }: TypeEl, i: number) => (
-                  <p style={{ backgroundColor: color }} key={i}>
-                    {tech}
-                  </p>
+              {vacancy.main_technologies.map(
+                (el: { name: string }, i: number) => (
+                  <p key={i}>{el.name}</p>
                 )
               )}
             </div>
@@ -45,18 +54,17 @@ export default function VacancyInfo() {
           <div className={styles.technologies}>
             <p>Будет плюсом, если владеете:</p>
             <div>
-              {array[RefInd.current - 1].moreTech.map(
-                ({ tech, color }: TypeEl, i: number) => (
-                  <p key={i} style={{ backgroundColor: color }}>
-                    {tech}
-                  </p>
+              {vacancy.more_technologies.map(
+                (el: { name: string }, i: number) => (
+                  <p key={i}>{el.name}</p>
                 )
               )}
             </div>
           </div>
         </div>
       </div>
-      <div>
+
+      <div className={styles.location__block}>
         <h2>Softrium</h2>
         <p>Улица Lorem, Красноуральская улица, 1</p>
       </div>
@@ -64,5 +72,7 @@ export default function VacancyInfo() {
         <button className={styles.goBack}>Вернуться назад</button>
       </Link>
     </div>
+  ) : (
+    <div />
   );
 }

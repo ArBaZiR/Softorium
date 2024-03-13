@@ -1,11 +1,12 @@
-import React from "react";
 import ReactDOM from "react-dom/client";
 import Router from "./Router/Router.tsx";
 import "./assets/styles/reset.css";
 import "./assets/styles/style.css";
-
+// REDAX
+import { Provider } from "react-redux";
+import { store } from "./store/index.ts";
 ReactDOM.createRoot(document.getElementById("root")!).render(
-  <React.StrictMode>
+  <Provider store={store}>
     <Router />
-  </React.StrictMode>
+  </Provider>
 );
