@@ -23,7 +23,6 @@ export default function VacancyInfo() {
         !data.detail ? (setVacancy(data), setIsLoading(false)) : navigate("/")
       );
   }, []);
-  console.log(vacancy);
 
   return !isLoading ? (
     <div className={styles.block}>
@@ -44,7 +43,7 @@ export default function VacancyInfo() {
           <div>
             <h2>Необходимы минимум:</h2>
             {vacancy.min_requirements.map((el: { name: string }, i: number) => (
-              <div>
+              <div key={i}>
                 <svg
                   width="16"
                   height="16"
@@ -57,7 +56,7 @@ export default function VacancyInfo() {
                     fill="#FF6633"
                   />
                 </svg>
-                <p key={i}>{el.name}</p>
+                <p>{el.name}</p>
               </div>
             ))}
           </div>
@@ -75,8 +74,8 @@ export default function VacancyInfo() {
       </div>
       <div className={styles.tasks}>
         <div>
-          {vacancy.tasks.map((el: { name: string }) => (
-            <div>
+          {vacancy.tasks.map((el: { name: string }, i: number) => (
+            <div key={i}>
               <svg
                 width="16"
                 height="16"
@@ -99,8 +98,8 @@ export default function VacancyInfo() {
       <div className={styles.ready_provide}>
         <img src="img/office.png" alt="#!" />
         <div>
-          {vacancy.list_offer.map((el: { name: string }) => (
-            <div>
+          {vacancy.list_offer.map((el: { name: string }, i: number) => (
+            <div key={i}>
               <svg
                 width="16"
                 height="16"
