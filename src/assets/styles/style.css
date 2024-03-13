@@ -7,3 +7,32 @@ html {
 body {
   font-family: Arial, Helvetica, sans-serif;
 }
+
+h1,
+h2,
+h3,
+h4,
+h5,
+p,
+input,
+button,
+img {
+  animation-name: blockAnimateMain;
+  animation-duration: 0.85s;
+  animation-timing-function: ease-in-out;
+}
+
+@keyframes blockAnimateMain {
+  0% {
+    transform: translateX(5em);
+    opacity: 0;
+  }
+
+  50% {
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
