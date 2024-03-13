@@ -2,6 +2,7 @@
 export const array = [
   {
     title: "Frontend Junior",
+    salary: 60000,
     technologies: [
       {
         tech: "MySql",
@@ -37,6 +38,7 @@ export const array = [
   },
   {
     title: "Frontend Senior",
+    salary: 500000,
     technologies: [
       {
         tech: "MySql",
@@ -84,6 +86,7 @@ export const array = [
   },
   {
     title: "Frontend Middle",
+    salary: 150000,
     technologies: [
       {
         tech: "MySql",
@@ -119,6 +122,7 @@ export const array = [
   },
   {
     title: "Backend Developer",
+    salary: 120000,
     technologies: [
       {
         tech: "MySql",
