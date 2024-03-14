@@ -28,7 +28,7 @@ export default function VacancyInfo() {
     <div className={styles.block}>
       <h1>Ищем {vacancy.name}</h1>
       <p>Трудоустройство в аккредитованную ИТ-компанию</p>
-      <div className={styles.company__info}>
+      <div className={styles.company__info_block}>
         <p>
           Мы любим сложные, интересные проекты, постоянно расширяемся и именно
           поэтому ищем новые таланты. В коллективе Softorium вы найдете
@@ -37,13 +37,13 @@ export default function VacancyInfo() {
         </p>
         <img src="img/companyPeople.jpg" alt="#!" />
       </div>
-      <div className={styles.required__minimum}>
+      <div className={styles.required__minimum_block}>
         <img src="img/technologies.jpg" alt="#!" />
-        <section>
-          <div>
+        <div>
+          <div className={styles.req__min}>
             <h2>Необходимы минимум:</h2>
             {vacancy.min_requirements.map((el: { name: string }, i: number) => (
-              <div key={i}>
+              <div className={styles.req__min_inf} key={i}>
                 <svg
                   width="16"
                   height="16"
@@ -60,7 +60,7 @@ export default function VacancyInfo() {
               </div>
             ))}
           </div>
-          <div>
+          <div className={styles.advantage}>
             <h2>Преимуществом будет знание:</h2>
             <div>
               {vacancy.more_technologies.map(
@@ -70,9 +70,9 @@ export default function VacancyInfo() {
               )}
             </div>
           </div>
-        </section>
+        </div>
       </div>
-      <div className={styles.tasks}>
+      <div className={styles.tasks__block}>
         <div>
           {vacancy.tasks.map((el: { name: string }, i: number) => (
             <div key={i}>
@@ -88,18 +88,17 @@ export default function VacancyInfo() {
                   fill="#0099CC"
                 />
               </svg>
-
               <p>{el.name}</p>
             </div>
           ))}
         </div>
         <img src="img/technologiesMen.jpg" alt="#!" />
       </div>
-      <div className={styles.ready_provide}>
+      <div className={styles.ready_provide_block}>
         <img src="img/office.png" alt="#!" />
         <div>
           {vacancy.list_offer.map((el: { name: string }, i: number) => (
-            <div key={i}>
+            <div className={styles.ready__prv_inf} key={i}>
               <svg
                 width="16"
                 height="16"
@@ -112,7 +111,6 @@ export default function VacancyInfo() {
                   fill="#FF6633"
                 />
               </svg>
-
               <p>{el.name}</p>
             </div>
           ))}
