@@ -53,9 +53,7 @@ export default function Vacancy() {
                   <p>Будет плюсом, если владеете:</p>
                   <div className={styles.technologies}>
                     {el.more_technologies.map(({ name }: TypeEl, i: number) => (
-                      <p className={styles.technologies} key={i}>
-                        {name}
-                      </p>
+                      <p key={i}>{name}</p>
                     ))}
                   </div>
                 </div>
