@@ -7,24 +7,31 @@ import { useSelector } from "react-redux";
 // API
 import { VacancyApi } from "../../hooks";
 
-type TypeObject = {
-  vacancySlice: object;
-};
-type TypeEl = {
-  name: string;
-};
 type TypeAllVacancy = {
-  name: string;
-  main_technologies: [];
-  more_technologies: [];
-  slug: string;
+  allVacancy: [
+    {
+      name: string;
+      main_technologies: [
+        {
+          name: string;
+        }
+      ];
+      more_technologies: [
+        {
+          name: string;
+        }
+      ];
+      slug: string;
+    }
+  ];
 };
 
 export default function Vacancy() {
   VacancyApi();
   //
-  const { allVacancy }: any = useSelector(
-    ({ vacancySlice }: TypeObject) => vacancySlice
+  const allVacancy = useSelector(
+    ({ vacancySlice }: { vacancySlice: TypeAllVacancy }) =>
+      vacancySlice.allVacancy
   );
 
   return (
@@ -37,14 +44,14 @@ export default function Vacancy() {
       <p>в команду Softoriun требуются:</p>
       <div className={styles.block__vacancy}>
         {allVacancy.length ? (
-          allVacancy.map((el: TypeAllVacancy, i: number) => (
+          allVacancy.map((el, i) => (
             <div key={i}>
               <div>
                 <h2>{el.name}</h2>
                 <div>
                   <p>Основной стек: </p>
                   <div className={styles.technologies}>
-                    {el.main_technologies.map(({ name }: TypeEl, i: number) => (
+                    {el.main_technologies.map(({ name }, i) => (
                       <p key={i}>{name}</p>
                     ))}
                   </div>
@@ -52,7 +59,7 @@ export default function Vacancy() {
                 <div>
                   <p>Будет плюсом, если владеете:</p>
                   <div className={styles.technologies}>
-                    {el.more_technologies.map(({ name }: TypeEl, i: number) => (
+                    {el.more_technologies.map(({ name }, i) => (
                       <p key={i}>{name}</p>
                     ))}
                   </div>

@@ -3,10 +3,25 @@ import styles from "./vacancyInfo.module.scss";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 //
+
+interface IVacncy {
+  name: string;
+  min_requirements: [{ name: string }];
+  more_technologies: [{ name: string }];
+  tasks: [{ name: string }];
+  list_offer: [{ name: string }];
+}
+
 export default function VacancyInfo() {
   const navigate = useNavigate();
   const locate = useLocation();
-  const [vacancy, setVacancy] = useState<any>({}); //Исправить
+  const [vacancy, setVacancy] = useState<IVacncy>({
+    name: "",
+    min_requirements: [{ name: "" }],
+    more_technologies: [{ name: "" }],
+    tasks: [{ name: "" }],
+    list_offer: [{ name: "" }],
+  });
   const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -42,7 +57,7 @@ export default function VacancyInfo() {
         <div>
           <div className={styles.req__min}>
             <h2>Необходимы минимум:</h2>
-            {vacancy.min_requirements.map((el: { name: string }, i: number) => (
+            {vacancy.min_requirements.map((el, i) => (
               <div className={styles.req__min_inf} key={i}>
                 <svg
                   width="16"
@@ -63,18 +78,16 @@ export default function VacancyInfo() {
           <div className={styles.advantage}>
             <h2>Преимуществом будет знание:</h2>
             <div>
-              {vacancy.more_technologies.map(
-                (el: { name: string }, i: number) => (
-                  <p key={i}>{el.name}</p>
-                )
-              )}
+              {vacancy.more_technologies.map((el, i) => (
+                <p key={i}>{el.name}</p>
+              ))}
             </div>
           </div>
         </div>
       </div>
       <div className={styles.tasks__block}>
         <div>
-          {vacancy.tasks.map((el: { name: string }, i: number) => (
+          {vacancy.tasks.map((el, i) => (
             <div key={i}>
               <svg
                 width="16"
@@ -97,7 +110,7 @@ export default function VacancyInfo() {
       <div className={styles.ready_provide_block}>
         <img src="img/office.png" alt="#!" />
         <div>
-          {vacancy.list_offer.map((el: { name: string }, i: number) => (
+          {vacancy.list_offer.map((el, i) => (
             <div className={styles.ready__prv_inf} key={i}>
               <svg
                 width="16"

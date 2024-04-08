@@ -25,7 +25,7 @@ export default function App() {
           element: <Vacancy />,
         },
         {
-          path: "/:vacancyId",
+          path: "/:slug",
           element: <VacancyInfo />,
         },
       ],
